@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using MovieShopMVC.Models;
 
@@ -13,9 +14,12 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
-        return View();
+        var movieService = new MovieService();
+        var movies = movieService.GetTop30GrossingMovies();
+        return View(movies);
     }
 
     public IActionResult Privacy()
