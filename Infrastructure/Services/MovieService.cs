@@ -1,18 +1,31 @@
+using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 namespace Infrastructure.Services;
 
 public class MovieService : IMovieService
 {
+  private readonly IMovieRepository _movieRepository;
+  public MovieService(IMovieRepository movieRepository)
+  {
+    _movieRepository = movieRepository;
+  }
   public List<MovieCardModel> GetTop30GrossingMovies()
   {
-    var movies = new List<MovieCardModel>()
-    {
-      new MovieCardModel { Id = 1, PosterUrl = "https://media.licdn.com/dms/image/C4E12AQG0XLL_RbB5WA/article-cover_image-shrink_720_1280/0/1528191623683?e=2147483647&v=beta&t=iqOMnKhi5j5wOa5YsrDSEqrUqv0HI8mjVtpw8Y2skpc", Title = "Inception" },
-      new MovieCardModel { Id = 2, PosterUrl = "", Title = "" },
-      new MovieCardModel { Id = 3, PosterUrl = "", Title = "" }
-    };
+    var movies = _movieRepository.GetTop30RevenueMovies();
+    
+    var movieCards = new List<MovieCardModel>();
 
-    return movies;
+    foreach (var movie in movies)
+    {
+      movieCards.Add(new MovieCardModel
+        {
+          Id = movie.Id, PosterUrl = movie.PosterUrl, Title = movie.Title
+        });
+      
+    }
+    return movieCards;
+    
   }
 }
