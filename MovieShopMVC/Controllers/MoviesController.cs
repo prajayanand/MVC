@@ -12,8 +12,9 @@ public class MoviesController : Controller
         _movieService = movieService;
     }
 
-    public IActionResult Index()
+    public IActionResult Details(int id)
     {
+        //Movie serv details and pass the movie det data to view
         return View();
     }
 }
