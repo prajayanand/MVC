@@ -24,7 +24,7 @@ public class MovieDetailsModel
     public decimal? Rating { get; set; }
     public List<GenreModel> Genres { get; set; }
     public List<TrailerModel> Trailers { get; set; }
-    public List<CastModel> casts { get; set; }
-    
+    public List<CastModel> Casts { get; set; }
+
     //genre,cast,trailers
 }
