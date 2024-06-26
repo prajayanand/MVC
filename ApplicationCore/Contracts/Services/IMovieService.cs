@@ -6,6 +6,7 @@ public interface IMovieService
 {
     List<MovieCardModel> GetTop30GrossingMovies();
 
-   // GetMovieDetails(int id);
+    MovieDetailsModel GetMovieDetails(int id);
 }
+
 

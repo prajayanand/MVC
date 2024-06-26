@@ -28,4 +28,9 @@ public class MovieService : IMovieService
     return movieCards;
     
   }
+
+  public MovieDetailsModel GetMovieDetails(int id)
+  {
+    throw new NotImplementedException();
+  }
 }
