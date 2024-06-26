@@ -7,5 +7,7 @@ public class Cast
     public string Gender { get; set; }
     public string TmdbUrl { get; set; }
     public string ProfilePath { get; set; }
+    public ICollection<MovieCast> MovieCasts { get; set; }
+    
 
 }
